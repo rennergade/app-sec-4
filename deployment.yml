@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: spelling-bee
@@ -17,8 +17,7 @@ spec:
     spec:
       containers:
         - name: spelling-bee
-          image: spelling-bee:latest
-          imagePullPolicy: Never
+          image: rennergade/spelling-bee:latest
           ports:
             - containerPort: 8080
           resources:

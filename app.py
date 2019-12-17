@@ -115,8 +115,6 @@ def create_app(config=None):
     # create and add admin
     def create_admin():
         username = "admin"
-        password = "Administrator@1"
-        auth = "12345678901"
 
         user = db.session.query(User).filter_by(username=username).first()
 
