@@ -15,7 +15,8 @@ def create_app(config=None):
     app.debug = True
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///spell.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-    app.secret_key = os.urandom(16)
+    app.secret_key = os.environ.get('SECRET_KEY')
+    
 
     db = SQLAlchemy(app)
 
@@ -122,7 +123,7 @@ def create_app(config=None):
         # check if admin exists
         if user: return 1
 
-        newuser = User(username=username, password=hashit(password), twofa=hashit(auth))
+        newuser = User(username=username, password=os.environ.get('ADMIN_PASS'), twofa=os.environ.get('ADMIN_AUTH'))
         db.session.add(newuser)
         db.session.commit()
 

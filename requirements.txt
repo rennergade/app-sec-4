@@ -3,3 +3,4 @@ tox
 Flask
 bleach
 Flask-WTF
+Flask-SQLAlchemy
