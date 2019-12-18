@@ -6,4 +6,4 @@ services:
       - "8080:8080"
     volumes:
       - .:/code
-    image: spelling-bee:latest
+    image: rennergade/spelling-bee:latest
