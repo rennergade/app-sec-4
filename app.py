@@ -32,7 +32,7 @@ def create_app(config=None):
     def hashit(key):
         m = hashlib.sha256()
         m.update(key.encode())
-        return m.digest()
+        return m.hexdigest()
 
     # and checking them too!
     def checkit(hash2compare, key):
