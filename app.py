@@ -120,7 +120,7 @@ def create_app(config=None):
 
         # check if admin exists
         if user: return 1
-
+        
         newuser = User(username=username, password=os.environ.get('ADMIN_PASS'), twofa=os.environ.get('ADMIN_AUTH'))
         db.session.add(newuser)
         db.session.commit()
