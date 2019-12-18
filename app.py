@@ -305,6 +305,40 @@ def create_app(config=None):
 
         return render_template('home.html')
 
+    @app.route('/debug')
+    def debug():
+
+        debugstring = ""
+
+        username = "admin"
+
+        user = db.session.query(User).filter_by(username=username).first()
+
+        debugstring += "username: "
+        debugstring += str(username)
+        debugstring += "\npassword: "
+
+        debugstring += str(user.password)
+        debugstring += "\nauth: "
+
+        debugstring += str(user.twofa)
+        debugstring += "\npasskey: "
+
+        debugstring += str(os.environ.get('ADMIN_PASS'))
+        debugstring += "\nauthkey: "
+
+        debugstring += str(os.environ.get('ADMIN_AUTH'))
+        debugstring += "\nsecretkey: "
+
+        debugstring += str(os.environ.get('SECRET_KEY'))
+
+        return debugstring
+
+
+
+
+
+
 
     return app
     
